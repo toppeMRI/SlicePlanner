@@ -9,4 +9,4 @@ Output: The file **ROI.h5** containing ROI parameters (size, location, rotation,
 
 For Java install+use notes, see ./Doc/
 
-![GUI screenshot](gui.jpg)
+![GUI screenshot](Resources/gui.jpg)
