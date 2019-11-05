@@ -1,0 +1,12 @@
+#!/bin/bash
+app="SlicePlanner"
+options="-cp .:/home/jon/Dropbox/java/sis-jhdf5/lib/* --module-path $PATH_TO_FX --add-modules javafx.graphics,javafx.controls"
+
+rm -f $app.class
+javac $options $app.java
+java  $options $app
+
+#javac -cp .:/home/jon/Dropbox/java/sis-jhdf5/lib/* --module-path $PATH_TO_FX --add-modules javafx.graphics,javafx.controls $app.java
+#java  -cp .:/home/jon/Dropbox/java/sis-jhdf5/lib/* --module-path $PATH_TO_FX --add-modules javafx.graphics,javafx.controls $app
+#javac -classpath . --module-path $PATH_TO_FX --add-modules javafx.graphics App1.java
+#java  -classpath . --module-path $PATH_TO_FX --add-modules javafx.graphics App1
