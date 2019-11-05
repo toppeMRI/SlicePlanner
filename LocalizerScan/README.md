@@ -1,4 +1,5 @@
-# 3D SPGR 'localizer' sequence for toppev3
+# 3D SPGR 'localizer' sequence for SlicePlanner
+
 
 ## Requirements
 
@@ -17,12 +18,14 @@ In Matlab:
 
 In Matlab:
 ```
->> main;
+>> main;       % creates toppev3,localizer.tgz
 ```
 
 ## Execute the sequence on a GE scanner
 
-Prescribe the toppev3 interpreter sequence and run.
+1. Untar the file 'toppev3,localizer.tgz' in /usr/g/bin/ on the scanner host.
+2. Prescribe the toppev3 interpreter sequence. Set the number of slices to 120 or greater. 
+3. Start scan.
 
 ## Convert P-file to 'Localizer.h5'
 
