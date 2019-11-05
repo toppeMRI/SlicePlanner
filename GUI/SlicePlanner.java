@@ -269,6 +269,7 @@ public class SlicePlanner extends Application {
 		// Create a new scene
 		Scene scene = new Scene(grid);
 		stage.setScene(scene);
+		stage.setTitle("SlicePlanner");
 		//stage.setMinHeight(600);
 		//stage.setMinWidth(1200);
 		stage.show();

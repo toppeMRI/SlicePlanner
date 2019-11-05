@@ -27,7 +27,7 @@ fclose(fid);
 
 %% Sequence parameters
 seq.n = 120;                     % matrix size (isotropic)
-seq.fov = 24;                    % in-plane fov (cm)
+seq.fov = 24;                    % fov (cm) (isotropic)
 seq.oprbw = 125/4;               % kHz
 dx = seq.fov/seq.n;              % voxel size (cm)
 
@@ -101,13 +101,13 @@ fprintf('\n');
 toppe.write2loop('finish');
 
 %% Save parameters and create tar file. We can reuse modules.txt from above.
-system('mkdir -p tar');
-cd tar
 save seq seq
-system('tar cf toppev3,localizer.tar ../main.m seq.mat ../*.mod ../modules.txt ../scanloop.txt');
-cd ..
+system('tar czf toppev3,localizer.tgz main.m seq.mat *.mod modules.txt scanloop.txt');
+system('rm seq.mat');
 
 fprintf('Scan time for 3D sequence: %.2f min\n', toppe.getscantime/60);
+
+fprintf('Copy toppev3,localizer.tgz to /usr/g/bin/ on scanner, untar, and scan with toppev3.\n');
 
 return;
 
