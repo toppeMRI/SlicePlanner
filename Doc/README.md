@@ -10,7 +10,7 @@ See [Install.md](Install.md)
 1. Create localizer image volume (or request a sample image from Jon)
 	1. Create TOPPE localizer scan files
 		```
-		>> cd ./experiment/Localizer
+		>> cd ./LocalizerScan/
 		>> main;
 		```
 	1. Scan :)
