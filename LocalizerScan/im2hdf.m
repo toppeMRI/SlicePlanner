@@ -2,39 +2,14 @@ function im2hdf(I)
 % function im2hdf(I)
 % 
 % Input:
-%   I    [n n n]    3D image. Must have isotropic matrix
+%   I    [n n n]    3D image. Isotropic matrix and voxel size.
 
-if ~exist('hdffile', 'var')
-	hdffile = 'Localizer.h5';
-end
-
-if ~exist('readoutfile', 'var')
-	readoutfile = 'readout.mod';
-end
-
-if ~exist('echo', 'var')
-	echo = 1;
-end
-
-if strcmp(pfile, 'test')
-	sub_test();
-	return
-end
+hdffile = 'Localizer.h5';
 
 % zero-fill factor
-zf = 2;                  
+zf = 4;                  
 
-% voxel dimensions
-load tar/seq
-dx = seq.fov/seq.n/zf;      % cm
-dy = dx;
-dz = dx;
-
-% get Pfile header
-[~, rdb_hdr] = toppe.utils.loadpfile(pfile);
-
-% reconstruct (magnitude) images
-[~, imsos] = toppe.utils.recon3dft(pfile, 'echo', echo, 'readoutfile', readoutfile);
+imsos = I;
 
 % make matrix large to increase image on screen in Java GUI
 dat = fftshift(fftn(fftshift(imsos)));
@@ -71,9 +46,9 @@ hdf5write(hdffile, '/Dims/nx', int16(nx));
 hdf5write(hdffile, '/Dims/ny', int16(ny), 'writemode', 'append');
 hdf5write(hdffile, '/Dims/nz', int16(nz), 'writemode', 'append');
 
-hdf5write(hdffile, '/Voxel/dx', dx, 'writemode', 'append');
-hdf5write(hdffile, '/Voxel/dy', dy, 'writemode', 'append');
-hdf5write(hdffile, '/Voxel/dz', dz, 'writemode', 'append');
+%hdf5write(hdffile, '/Voxel/dx', dx, 'writemode', 'append');
+%hdf5write(hdffile, '/Voxel/dy', dy, 'writemode', 'append');
+%hdf5write(hdffile, '/Voxel/dz', dz, 'writemode', 'append');
 
 imsos = uint8(round(imsos));
 
