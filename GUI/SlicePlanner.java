@@ -7,8 +7,6 @@ Input:
 Output:
    3D rectangular ROI(s) (see ROI.java) 
 
-Part of the TOPPE toolbox for platform-independent MR pulse sequence programming (https://toppemri.github.io/).
-
 Developed in openjfx-12.0.2 and openjdk-12.0.2
 */
 
