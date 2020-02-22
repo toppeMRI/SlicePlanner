@@ -587,8 +587,8 @@ public class SlicePlanner extends Application {
 				rotateCircle.setFill(null);
 			}
 			else {
-				polygon.setStroke(Color.BLUE);
-				polygon.setStrokeWidth(3.0);
+				//polygon.setStroke(Color.RED);
+				polygon.setStrokeWidth(5.0);
 				polygon.setFill(null);
 				rb.setFill(Color.RED);
 				tb.setFill(Color.BLUE);
@@ -645,7 +645,7 @@ public class SlicePlanner extends Application {
 
 				// Draw polygon
 				polygon.getPoints().setAll(pvs);
-				polygon.setStroke(Color.BLUE);
+				polygon.setStroke(Color.RED);
 
 				// TODO: draw line/arrow showing through-slice (thickness) dimension
 
