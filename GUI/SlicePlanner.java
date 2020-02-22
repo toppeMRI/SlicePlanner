@@ -588,6 +588,7 @@ public class SlicePlanner extends Application {
 			}
 			else {
 				polygon.setStroke(Color.BLUE);
+				polygon.setStrokeWidth(3.0);
 				polygon.setFill(null);
 				rb.setFill(Color.RED);
 				tb.setFill(Color.BLUE);
