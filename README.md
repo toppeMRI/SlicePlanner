@@ -1,6 +1,6 @@
 # SlicePlanner
 
-GUI for prescribing one (or more) slabs off of a stack of 2D images.  
+GUI for prescribing one (or more) 3D rectangular ROIs off of a stack of 2D images.  
 
 Primary goal is to emulate the slice prescription experience on commercial MRI scanners.
 
