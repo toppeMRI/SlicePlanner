@@ -11,6 +11,8 @@ Input: The file **Localizer.h5** containing a 3D image volume in HDF5 format. Se
 
 Output: The file **ROI.h5** containing ROI parameters (size, location, rotation, offset from iso-center).
 
-For Java install+use notes, see ./Doc/
+For Java install+use notes, see ./Doc/.
+
+See also [./GUI/README.md](./GUI/README.md)
 
 ![GUI screenshot](Resources/gui.jpg)

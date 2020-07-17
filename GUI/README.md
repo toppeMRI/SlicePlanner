@@ -23,7 +23,7 @@ This graphical tool can be run on commonly used personal computers, and does not
 
 Prerequisite: The file **Localizer.h5** must exist in the local path. 
 
-To start the GUI:
+To start the GUI, edit the `start` script to point to your HDF library and do:
 ```
 $ ./start
 ```
