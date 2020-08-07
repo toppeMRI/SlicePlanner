@@ -77,8 +77,11 @@ for iz = -0:nz           % iz < 1 are discarded acquisitions (to reach steady st
 	end
 
 	for iy = 1:ny
-		for iim = 1:2
+		% y/z phase-encode amplitudes, scaled to (-1,1)
+		a_gy = peOn * ((iy-1+0.5)-ny/2)/(ny/2);
+		a_gz = peOn * ((iz-1+0.5)-nz/2)/(nz/2);
 
+		for iim = 1:2
 			% TE shift for B0 field mapping
 			if iim == 1
 				textra1 = 0;
@@ -87,10 +90,6 @@ for iz = -0:nz           % iz < 1 are discarded acquisitions (to reach steady st
 				textra1 = seq.deltaTE; 
 				textra2 = 0;
 			end
-
-			% y/z phase-encode amplitudes, scaled to (-1,1)
-			a_gy = peOn * ((iy-1+0.5)-ny/2)/(ny/2);
-			a_gz = peOn * ((iz-1+0.5)-nz/2)/(nz/2);
 
 			% rf excitation
 	  		toppe.write2loop('tipdown.mod', ...
