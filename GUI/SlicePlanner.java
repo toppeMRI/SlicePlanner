@@ -190,7 +190,7 @@ public class SlicePlanner extends Application {
 		// Initialize the ROI(s).   TODO: read initial ROIs from config file
 		for (int id = 0; id < nROI; id++) {		
 			double[] size = new double[]{3.*nx/4, 3.*nx/4, nz/8.};
-			double[] center = new double[]{0., 0., -nz/4 + 40*id};      // offset from iso-center
+			double[] center = new double[]{0., 0., 0.}; // -nz/4 + 40*id};      // offset from iso-center
 			double[] minSize = new double[]{20., 5., 5.};
 			double[] maxSize = new double[]{nx, ny, ny};
 			rois[id] = new ROI(size, center, minSize, maxSize, Utils.rotmatAxi, id);
@@ -588,7 +588,7 @@ public class SlicePlanner extends Application {
 			}
 			else {
 				//polygon.setStroke(Color.RED);
-				polygon.setStrokeWidth(5.0);
+				polygon.setStrokeWidth(2.0);
 				polygon.setFill(null);
 				rb.setFill(Color.RED);
 				tb.setFill(Color.BLUE);
