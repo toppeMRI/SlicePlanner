@@ -24,7 +24,7 @@ end
 zf = 2;                  
 
 % voxel dimensions
-load tar/seq
+load seq
 dx = seq.fov/seq.n/zf;      % cm
 dy = dx;
 dz = dx;
@@ -33,7 +33,7 @@ dz = dx;
 [~, rdb_hdr] = toppe.utils.loadpfile(pfile);
 
 % reconstruct (magnitude) images
-[~, imsos] = toppe.utils.recon3dft(pfile, 'echo', echo, 'readoutfile', readoutfile);
+[~, imsos] = toppe.utils.recon3dft(pfile, 'echo', echo, 'readoutFile', readoutfile);
 
 % make matrix large to increase image on screen in Java GUI
 dat = fftshift(fftn(fftshift(imsos)));

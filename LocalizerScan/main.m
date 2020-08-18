@@ -116,8 +116,7 @@ toppe.write2loop('finish');
 
 %% Save parameters and create tar file.
 save seq seq
-system('tar czfP toppev3,localizer.tgz main.m seq.mat *.mod modules.txt scanloop.txt');
-system('rm seq.mat');
+system('tar czfP toppev3,localizer,b0.tgz main.m seq.mat *.mod modules.txt scanloop.txt');
 
 fprintf('Scan time for 3D sequence: %.2f min\n', toppe.getscantime/60);
 fprintf('Copy toppev3,localizer.tgz to /usr/g/bin/ on scanner, untar, and scan with toppev3.\n');
