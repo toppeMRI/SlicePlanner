@@ -24,7 +24,7 @@ In Matlab:
 ## Execute the TOPPE sequence on a GE scanner
 
 1. Untar the file 'toppev3,localizer.tgz' in /usr/g/bin/ on the scanner host.
-2. Prescribe the toppev3 interpreter sequence. Set the number of slices to 120 or greater. 
+2. Prescribe the toppev3 interpreter sequence. Set the number of slices to 120 or greater. Freq. Dir: R/L.
 3. Start scan.
 
 ## Convert P-file to 'Localizer.h5'
