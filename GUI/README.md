@@ -19,11 +19,36 @@ Clicking the ‘Export ROIs’ button writes all ROIs to a single HDF5 file that
 This graphical tool can be run on commonly used personal computers, and does not rely on graphics processing units (GPU) or other advanced graphics features.
 
 
-## Starting the GUI (Linux)
+## Installation and starting the GUI (Ubuntu)
 
-Prerequisite: The file **Localizer.h5** must exist in the local path. 
 
-To start the GUI, edit the `start` script to point to your HDF library and do:
+### Localizer image volume
+
+The file **Localizer.h5** must exist in the local path. See ../LocalizerScan/.
+
+
+### Install JAVA components
+
+Install java compiler:
+```
+$ sudo apt-get install openjdk-17-jdk
+```
+
+Unzip javafx components to a folder of your choice:
+```
+$ unzip openjfx-12.0.2_linux-x64_bin-sdk.zip
+```
+
+### Install HDF library
+
+Unzip HDF java library to a folder of your choice:
+```
+$ unzip sis-jhdf5-19.04.0.zip
+```
+
+### Edit `start` script and start GUI
+
+Edit the `start` script to point to your JAVAFX and HDF libraries and do:
 ```
 $ ./start
 ```
