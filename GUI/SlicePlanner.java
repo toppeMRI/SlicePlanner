@@ -192,7 +192,7 @@ public class SlicePlanner extends Application {
 			double[] size = new double[]{3.*nx/4, 3.*nx/4, nz/8.};
 			double[] center = new double[]{0., 0., 0.}; // -nz/4 + 40*id};      // offset from iso-center
 			double[] minSize = new double[]{20., 5., 5.};
-			double[] maxSize = new double[]{nx, ny, ny};
+			double[] maxSize = new double[]{nx, ny, nz};
 			rois[id] = new ROI(size, center, minSize, maxSize, Utils.rotmatAxi, id);
 			//rois[id] = new ROI(nx, ny, nz, id);
 		}
