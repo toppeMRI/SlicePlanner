@@ -44,10 +44,10 @@ public class MRImageView extends ImageView {
 
 			if (enableScroll) {
 				if (delta > 0) {
-					sliceOffset += 2.;
+					sliceOffset -= 2.;
 				}
 				else if (delta < 0) {
-					sliceOffset -= 2.;
+					sliceOffset += 2.;
 				}
 			}
 			

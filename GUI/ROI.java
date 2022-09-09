@@ -103,9 +103,9 @@ public class ROI {
 			s += Integer.toString((int)Math.round(w)) + "/";
 			s += Integer.toString((int)Math.round(h)) + "/";
 			s += Integer.toString((int)Math.round(t)) + ", center x/y/z=";
-			s += Integer.toString((int)Math.round(x)) + "/";
-			s += Integer.toString((int)Math.round(y)) + "/";
-			s += Integer.toString((int)Math.round(z));
+			s += Integer.toString((int)Math.round(-x)) + "/";
+			s += Integer.toString((int)Math.round(-y)) + "/";
+			s += Integer.toString((int)Math.round(-z));
 			s += "\nRotation matrix:\n";
 			for(int i=0;i<3;i++) {    
 				for(int j=0;j<3;j++) {    
@@ -136,9 +136,9 @@ public class ROI {
 		writer.writeDouble("ROI" + i + "/dimensions/maxHeight", hmax);
 		writer.writeDouble("ROI" + i + "/dimensions/maxThickness", tmax);
 
-		writer.writeDouble("ROI" + i + "/center/x", x);
-		writer.writeDouble("ROI" + i + "/center/y", y);
-		writer.writeDouble("ROI" + i + "/center/z", z);
+		writer.writeDouble("ROI" + i + "/center/x", -x);
+		writer.writeDouble("ROI" + i + "/center/y", -y);
+		writer.writeDouble("ROI" + i + "/center/z", -z);
 
 		// write rotation matrix as 1D array, in row-major form (to avoid row/column swaps which HDF5 seems to like to do)
 		double[] rot = new double[9];

@@ -75,7 +75,7 @@ import javafx.scene.control.CheckBox;
 
 public class SlicePlanner extends Application {
 
-	static int nROI = 3;              // max number of ROIs to draw in this application.
+	static int nROI = 1;              // max number of ROIs to draw in this application.
 
 	static ROI[] rois = new ROI[nROI];   // list of ROIs
 
