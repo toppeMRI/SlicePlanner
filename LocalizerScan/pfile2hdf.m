@@ -1,5 +1,6 @@
 function pfile2hdf(pfile, echo, readoutfile, hdffile)
-% function pfile2hdf(pfile, echo, readoutfile, hdffile)
+% function pfile2hdf(pfile, [echo=1, readoutfile='readout.mod', hdffile='Localizer.h5])
+%
 % Recon a 3D spin-warp (GRE) Pfile acquired with TOPPE, 
 % and save (magnitude) image stack in HDF5 format that can be loaded into the GUI in ../GUI/.
 
@@ -24,7 +25,8 @@ end
 zf = 2;                  
 
 % voxel dimensions
-load seq
+seq.fov = 24;  % cm (isotropic)
+seq.n = 120;   % matrix size (isotropic)
 dx = seq.fov/seq.n/zf;      % cm
 dy = dx;
 dz = dx;
@@ -34,6 +36,10 @@ dz = dx;
 
 % reconstruct (magnitude) images
 [~, imsos] = toppe.utils.recon3dft(pfile, 'echo', echo, 'readoutFile', readoutfile);
+
+% flip y (phase-encode) and z dimensions so it appears in the right orientation in the GUI
+imsos = flipdim(imsos, 2);
+imsos = flipdim(imsos, 3);
 
 % make matrix large to increase image on screen in Java GUI
 dat = fftshift(fftn(fftshift(imsos)));
