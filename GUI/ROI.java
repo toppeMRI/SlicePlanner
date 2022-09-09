@@ -176,7 +176,9 @@ public class ROI {
 			d = -d;
 		}
 		writer.writeDouble("ROI" + i + "/scanPlaneToIsocenterDistance", d);
-		System.out.println(d);
+		//System.out.println(d);
+
+		System.out.println(this);
 
 		writer.close();
 	}
