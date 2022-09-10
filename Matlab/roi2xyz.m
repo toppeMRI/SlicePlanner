@@ -1,41 +1,32 @@
-function [X, Y, Z] = roi2xyz(roi, FOV, showROI)
-% function [X, Y, Z] = roi2xyz(roi, [FOV, showROI])
+function [X, Y, Z] = roi2xyz(roi, N, FOV, showROI)
+% function [X, Y, Z] = roi2xyz(roi, N, FOV, [showROI=true])
 %
 % Get spatial locations X, Y, Z (in cm) for grid locations
 % inside a rectangular ROI (that is possibly off-center and rotated).
+% Grid locations are defined by N and FOV.
 %
 % Inputs:
-%   roi   struct containing rectangular ROI parameters. See toppe.getroi()
-%   FOV   [1 3]   field of view (cm). Temporary fix since roi is currently in pixel units
+%   roi     struct containing rectangular ROI parameters. See toppe.getroi()
+%   N       [1 3]   matrix size
+%   FOV     [1 3]   field of view (cm)
+%   shoROI  true/false   
 %
 % Output:
 %   X/Y/Z   [nVoxInt 1]   Voxels locations (cm) in the interior of the ROI.
 
-if nargin < 2
-    FOV = [24 24 20];  % cm
-end
-if nargin < 3
+FOV = FOV*10;   % mm
+
+if nargin < 4
     showROI = true;
 end
-
-N = [roi.wmax roi.tmax roi.hmax];  % matrix size
 
 % Distance between center of edge points
 % (max voxel distance from center of FOV is FOVc/2)
 FOVc = FOV - FOV./N;
 
-% At the moment, roi units are in pixels (TODO: make roi units = cm).
-% So here's a fix for now.
-roi.w = roi.w * FOV(1)/N(1);  % width (cm) (x)
-roi.h = roi.h * FOV(2)/N(2);  % height  (z)
-roi.t = roi.t * FOV(3)/N(3);  % thickness  (y)
-roi.x = roi.x * FOV(1)/N(1);  % center (x coordinate)
-roi.y = roi.y * FOV(2)/N(2);  % center
-roi.z = roi.z * FOV(3)/N(3);  % center
-
-[X, Y, Z] = ndgrid(linspace(-1,1,N(1))*FOVc(1)/2, ...
-                   linspace(-1,1,N(2))*FOVc(2)/2, ...
-                   linspace(-1,1,N(3))*FOVc(3)/2);
+[X, Y, Z] = ndgrid(linspace(1,-1,N(1))*FOVc(1)/2, ...
+                   linspace(1,-1,N(2))*FOVc(2)/2, ...
+                   linspace(1,-1,N(3))*FOVc(3)/2);
 
 % get voxel locations inside rectangle (before rotating and translating)
 mask = ones(N);
@@ -66,6 +57,7 @@ Y(inds) = [];
 Z(inds) = [];
 
 % display
+% this is approximate since some grid points may be missed after rotating and translating
 if showROI
     % convert voxel locations (in cm) to matrix indeces
     Xinds = N(1)/2 +  round(X/FOV(1)*N(1));     
@@ -82,5 +74,8 @@ if showROI
     title('NB! Display may contain zeros (holes) due to rounding');
 end
 
-
+% convert to cm
+X = X(:)/10;
+Y = Y(:)/10;
+Z = Z(:)/10;
 
