@@ -14,6 +14,7 @@ function [X, Y, Z] = roi2xyz(roi, N, FOV, showROI)
 % Output:
 %   X/Y/Z   [nVoxInt 1]   Voxels locations (cm) in the interior of the ROI.
 
+% internal calculations are in mm
 FOV = FOV*10;   % mm
 
 if nargin < 4
@@ -59,7 +60,7 @@ Z(inds) = [];
 % display
 % this is approximate since some grid points may be missed after rotating and translating
 if showROI
-    % convert voxel locations (in cm) to matrix indeces
+    % convert voxel locations (in mm) to matrix indeces
     % Note negative sign due to universal coordinate system 
     Xinds = N(1)/2 +  round(-X/FOV(1)*N(1));     
     Yinds = N(2)/2 +  round(-Y/FOV(2)*N(2));    
