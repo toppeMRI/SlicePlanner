@@ -31,8 +31,8 @@ FOVc = FOV - FOV./N;
 % get voxel locations inside rectangle (before rotating and translating)
 mask = ones(N);
 mask(X > roi.w/2 | X < -roi.w/2) = 0;
-mask(Y > roi.t/2 | Y < -roi.t/2) = 0;
-mask(Z > roi.h/2 | Z < -roi.h/2) = 0;
+mask(Y > roi.h/2 | Y < -roi.h/2) = 0;
+mask(Z > roi.t/2 | Z < -roi.t/2) = 0;
 X = X(logical(mask));  % column vector
 Y = Y(logical(mask));
 Z = Z(logical(mask));
@@ -60,9 +60,10 @@ Z(inds) = [];
 % this is approximate since some grid points may be missed after rotating and translating
 if showROI
     % convert voxel locations (in cm) to matrix indeces
-    Xinds = N(1)/2 +  round(X/FOV(1)*N(1));     
-    Yinds = N(2)/2 +  round(Y/FOV(2)*N(2));    
-    Zinds = N(3)/2 +  round(Z/FOV(3)*N(3));    
+    % Note negative sign due to universal coordinate system 
+    Xinds = N(1)/2 +  round(-X/FOV(1)*N(1));     
+    Yinds = N(2)/2 +  round(-Y/FOV(2)*N(2));    
+    Zinds = N(3)/2 +  round(-Z/FOV(3)*N(3));    
 
     % create mask and display
     mask = zeros(N);
