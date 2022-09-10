@@ -202,9 +202,9 @@ public class ROI {
 		hmax = reader.readDouble("ROI" + i + "/dimensions/maxHeight");
 		tmax = reader.readDouble("ROI" + i + "/dimensions/maxThickness");
 
-		x = reader.readDouble("ROI" + i + "/center/x");
-		y = reader.readDouble("ROI" + i + "/center/y");
-		z = reader.readDouble("ROI" + i + "/center/z");
+		x = -reader.readDouble("ROI" + i + "/center/x");
+		y = -reader.readDouble("ROI" + i + "/center/y");
+		z = -reader.readDouble("ROI" + i + "/center/z");
 
 		double[] rot = new double[9];
 		rot = reader.readDoubleArray("ROI" + i + "/rotmat");
