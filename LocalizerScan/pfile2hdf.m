@@ -35,11 +35,8 @@ dz = dx;
 [~, rdb_hdr] = toppe.utils.loadpfile(pfile);
 
 % reconstruct (magnitude) images
-[~, imsos] = toppe.utils.recon3dft(pfile, 'echo', echo, 'readoutFile', readoutfile);
-
-% flip y (phase-encode) and z dimensions so it appears in the right orientation in the GUI
-imsos = flipdim(imsos, 2);
-imsos = flipdim(imsos, 3);
+[~, imsos] = toppe.utils.recon3dft(pfile, 'echo', echo, 'readoutFile', readoutfile, ...
+    'alignWithUCS', true);
 
 % make matrix large to increase image on screen in Java GUI
 dat = fftshift(fftn(fftshift(imsos)));
