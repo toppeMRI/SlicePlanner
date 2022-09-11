@@ -77,8 +77,9 @@ if showROI
 end
 
 % convert to cm
-X = X(:)/10;
-Y = Y(:)/10;
-Z = Z(:)/10;
+Xshimvol = X(:)/10;
+Yshimvol = Y(:)/10;
+Zshimvol = Z(:)/10;
 
-save XYZ X Y Z
+save shimvol.mat Xshimvol Yshimvol Zshimvol
+
