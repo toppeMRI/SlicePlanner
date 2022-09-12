@@ -1,21 +1,19 @@
-
-%% create b0 scan files (TOPPE)
+function makelocscan(sys)
 
 addpath ~/github/HarmonizedMRI/Calibration/b0/GE   % b04ge.m
 
-sys = toppe.systemspecs('maxSlew', 15, 'slewUnit', 'Gauss/cm/ms', ...
-    'maxGrad', 5, 'gradUnit', 'Gauss/cm', ...
-    'myrfdel', 58, ... % (us) best if multiple of 4us
-    'daqdel', 60, ...  % (us) best if multiple of 4us
-    'gradient', 'xrm', ... % xrm: MR750; hrmb: UHP
-    'timessi', 200);    % us
-
+%sys = toppe.systemspecs('maxSlew', 15, 'slewUnit', 'Gauss/cm/ms', ...
+%    'maxGrad', 5, 'gradUnit', 'Gauss/cm', ...
+%    'myrfdel', 58, ... % (us) best if multiple of 4us
+%    'daqdel', 60, ...  % (us) best if multiple of 4us
+%    'gradient', 'xrm', ... % xrm: MR750; hrmb: UHP
+%    'timessi', 200);    % us
 
 % isotropic FOV and matrix
 FOV = 24 * [1 1 1];  % cm  
 N = 120 * [1 1 1]; 
 
-deltaTE = [0 2.3];          % (ms) TE shift for B0 mapping
+deltaTE = [0];          % (ms) TE shift for B0 mapping
 flip = 5;                   % excitation angle (degrees)
 
 b04ge(sys, N, FOV, flip, deltaTE, ...
